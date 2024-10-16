@@ -1,4 +1,4 @@
-// import { useGetAllInstruments } from "./hooks/useInstruments";
+import { useGetAllInstruments } from "./hooks/useInstruments";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 
 import Nav from "./components/header/Navbar";
@@ -12,9 +12,12 @@ import Studio from "./components/header/categories/Studio"
 
 import Footer from "./components/home/Footer";
 function App() {
-  // const allInstr = useGetAllInstruments();
+  const allInstr = useGetAllInstruments();
+  
   return (
+    
     <>
+    {JSON.stringify(allInstr)}
       <Nav />
       <Router>
         <Routes>
