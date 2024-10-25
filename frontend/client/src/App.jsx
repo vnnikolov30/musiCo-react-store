@@ -11,13 +11,14 @@ import Keys from "./components/header/categories/Keys"
 import Studio from "./components/header/categories/Studio"
 
 import Footer from "./components/home/Footer";
+import Instruments from "./components/header/categories/instruments/Instruments";
 function App() {
   const allInstr = useGetAllInstruments();
   
   return (
     
     <>
-    {JSON.stringify(allInstr)}
+    {/* {JSON.stringify(allInstr)} */}
       <Nav />
       <Router>
         <Routes>
@@ -27,6 +28,7 @@ function App() {
           <Route path="/drums" element={<Drums />} />
           <Route path="/keys" element={<Keys />} />
           <Route path="/studio" element={<Studio />} />
+          <Route path="/instruments" element={<Instruments />} />
         </Routes>
       </Router>
       <Footer/>

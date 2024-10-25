@@ -1,4 +1,3 @@
-import {Link as LinkReact} from "react-router-dom";
 import {
   Navbar,
   NavbarBrand,
@@ -30,11 +29,12 @@ export default function Nav() {
     drum: <Drum className="text-secondary" fill="currentColor" size={30} />,
     keys: <Keys className="text-primary" fill="currentColor" size={30} />,
   };
+
   return (
     <Navbar shouldHideOnScroll>
       <NavbarBrand>
         {/* <AcmeLogo /> */}
-        <p className="font-bold text-inherit">MusiCo</p>
+        <Link href="/" color="foreground"><p className="font-bold text-inherit">MusiCo</p></Link>
         
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-20" justify="center">
@@ -62,38 +62,42 @@ export default function Nav() {
             <DropdownItem
               key="guitars"
               description="Explore a wide range of guitars and basses, from electric to acoustic, perfect for every musician."
-              startContent={icons.guitar}
+              startContent={icons.guitar} 
             >
-              Guitars & Basses
+              <Link href="/guitars-and-bass" color="foreground">Guitars & Basses</Link>
+              
             </DropdownItem>
+
+            
             <DropdownItem
               key="drums"
               description="Discover top-quality drum kits, cymbals, and percussion instruments for all skill levels."
               startContent={icons.drum}
             >
-              Drums
+              <Link href="/drums" color="foreground">Drums</Link>
             </DropdownItem>
             <DropdownItem
               key="keys"
               description="Find the perfect piano or keyboard to enhance your sound, from digital to grand pianos."
               startContent={icons.keys}
             >
-              Keys
+              <Link href="/keys" color="foreground">Keys</Link>
             </DropdownItem>
             <DropdownItem
               key="studio"
               description="Equip your studio with the best recording gear, interfaces, and microphones for professional sound."
               startContent={icons.studio}
             >
-              Studio
+              <Link href="/studio" color="foreground">Studio</Link>
             </DropdownItem>
+            
             <DropdownItem
               
               key="dj"
               description=" Get the latest DJ equipment, from controllers to turntables, and elevate your next performance."
               startContent={icons.dj}
             >
-              Dj
+              <Link href="/dj" color="foreground">Dj</Link>
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
