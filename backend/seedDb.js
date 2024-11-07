@@ -1,20 +1,22 @@
 const mongoose = require("mongoose");
+
 require("dotenv").config({ path: "./config.env" });
 
 // Define schema for a product
 const productSchema = new mongoose.Schema({
-  category: String,
+  genre: String,
   title: String,
+  artist: String,
   productImg: [String],
   price: Number,
   rating: Number,
   bought: Number,
-  manufacturer: String,
+  year: Number,
 });
 
-const Product = mongoose.model("instruments", productSchema);
+const Product = mongoose.model("albums", productSchema);
 
-const products = [
+const instruments = [
   // Guitars
   {
     category: "guitar",
@@ -251,6 +253,321 @@ const products = [
   },
 ];
 
+const albums = [
+  // Metal
+  {
+    genre: "metal",
+    title: "Master of Puppets",
+    artist: "Metallica",
+    productImg: [""],
+    price: 14.99,
+    rating: 10,
+    bought: 250,
+    year: 1986,
+  },
+  {
+    genre: "metal",
+    title: "Rust in Peace",
+    artist: "Megadeth",
+    productImg: [""],
+    price: 13.99,
+    rating: 9,
+    bought: 180,
+    year: 1990,
+  },
+  {
+    genre: "metal",
+    title: "Paranoid",
+    artist: "Black Sabbath",
+    productImg: [""],
+    price: 15.99,
+    rating: 10,
+    bought: 300,
+    year: 1970,
+  },
+  {
+    genre: "metal",
+    title: "The Number of the Beast",
+    artist: "Iron Maiden",
+    productImg: [""],
+    price: 14.99,
+    rating: 10,
+    bought: 270,
+    year: 1982,
+  },
+  {
+    genre: "metal",
+    title: "Blackwater Park",
+    artist: "Opeth",
+    productImg: [""],
+    price: 16.99,
+    rating: 9,
+    bought: 150,
+    year: 2001,
+  },
+
+  // Hip-Hop
+  {
+    genre: "hip-hop",
+    title: "The Chronic",
+    artist: "Dr. Dre",
+    productImg: [""],
+    price: 12.99,
+    rating: 10,
+    bought: 300,
+    year: 1992,
+  },
+  {
+    genre: "hip-hop",
+    title: "To Pimp a Butterfly",
+    artist: "Kendrick Lamar",
+    productImg: [""],
+    price: 14.99,
+    rating: 10,
+    bought: 250,
+    year: 2015,
+  },
+  {
+    genre: "hip-hop",
+    title: "Illmatic",
+    artist: "Nas",
+    productImg: [""],
+    price: 11.99,
+    rating: 10,
+    bought: 220,
+    year: 1994,
+  },
+  {
+    genre: "hip-hop",
+    title: "Enter the Wu-Tang (36 Chambers)",
+    artist: "Wu-Tang Clan",
+    productImg: [""],
+    price: 12.99,
+    rating: 10,
+    bought: 260,
+    year: 1993,
+  },
+  {
+    genre: "hip-hop",
+    title: "My Beautiful Dark Twisted Fantasy",
+    artist: "Kanye West",
+    productImg: [""],
+    price: 15.99,
+    rating: 10,
+    bought: 240,
+    year: 2010,
+  },
+
+  // Electronic
+  {
+    genre: "electronic",
+    title: "Discovery",
+    artist: "Daft Punk",
+    productImg: [""],
+    price: 13.99,
+    rating: 10,
+    bought: 180,
+    year: 2001,
+  },
+  {
+    genre: "electronic",
+    title: "Selected Ambient Works 85-92",
+    artist: "Aphex Twin",
+    productImg: [""],
+    price: 14.99,
+    rating: 9,
+    bought: 140,
+    year: 1992,
+  },
+  {
+    genre: "electronic",
+    title: "Untrue",
+    artist: "Burial",
+    productImg: [""],
+    price: 12.99,
+    rating: 9,
+    bought: 120,
+    year: 2007,
+  },
+  {
+    genre: "electronic",
+    title: "Music Has the Right to Children",
+    artist: "Boards of Canada",
+    productImg: [""],
+    price: 13.99,
+    rating: 10,
+    bought: 100,
+    year: 1998,
+  },
+  {
+    genre: "electronic",
+    title: "Play",
+    artist: "Moby",
+    productImg: [""],
+    price: 11.99,
+    rating: 8,
+    bought: 150,
+    year: 1999,
+  },
+
+  // Hard Rock
+  {
+    genre: "hard rock",
+    title: "Appetite for Destruction",
+    artist: "Guns N' Roses",
+    productImg: [""],
+    price: 15.99,
+    rating: 10,
+    bought: 250,
+    year: 1987,
+  },
+  {
+    genre: "hard rock",
+    title: "Back in Black",
+    artist: "AC/DC",
+    productImg: [""],
+    price: 13.99,
+    rating: 10,
+    bought: 300,
+    year: 1980,
+  },
+  {
+    genre: "hard rock",
+    title: "Led Zeppelin IV",
+    artist: "Led Zeppelin",
+    productImg: [""],
+    price: 14.99,
+    rating: 10,
+    bought: 280,
+    year: 1971,
+  },
+  {
+    genre: "hard rock",
+    title: "Highway to Hell",
+    artist: "AC/DC",
+    productImg: [""],
+    price: 12.99,
+    rating: 10,
+    bought: 200,
+    year: 1979,
+  },
+  {
+    genre: "hard rock",
+    title: "Nevermind",
+    artist: "Nirvana",
+    productImg: [""],
+    price: 14.99,
+    rating: 10,
+    bought: 280,
+    year: 1991,
+  },
+
+  // Pop
+  {
+    genre: "pop",
+    title: "Thriller",
+    artist: "Michael Jackson",
+    productImg: [""],
+    price: 12.99,
+    rating: 10,
+    bought: 500,
+    year: 1982,
+  },
+  {
+    genre: "pop",
+    title: "1989",
+    artist: "Taylor Swift",
+    productImg: [""],
+    price: 14.99,
+    rating: 9,
+    bought: 300,
+    year: 2014,
+  },
+  {
+    genre: "pop",
+    title: "Future Nostalgia",
+    artist: "Dua Lipa",
+    productImg: [""],
+    price: 13.99,
+    rating: 9,
+    bought: 150,
+    year: 2020,
+  },
+  {
+    genre: "pop",
+    title: "Like a Prayer",
+    artist: "Madonna",
+    productImg: [""],
+    price: 12.99,
+    rating: 10,
+    bought: 320,
+    year: 1989,
+  },
+  {
+    genre: "pop",
+    title: "25",
+    artist: "Adele",
+    productImg: [""],
+    price: 14.99,
+    rating: 10,
+    bought: 280,
+    year: 2015,
+  },
+
+  // Metalcore
+  {
+    genre: "metalcore",
+    title: "Alive or Just Breathing",
+    artist: "Killswitch Engage",
+    productImg: [""],
+    price: 14.99,
+    rating: 9,
+    bought: 160,
+    year: 2002,
+  },
+  {
+    genre: "metalcore",
+    title: "Sempiternal",
+    artist: "Bring Me The Horizon",
+    productImg: [""],
+    price: 15.99,
+    rating: 10,
+    bought: 200,
+    year: 2013,
+  },
+  {
+    genre: "metalcore",
+    title: "Ascendancy",
+    artist: "Trivium",
+    productImg: [""],
+    price: 13.99,
+    rating: 9,
+    bought: 130,
+    year: 2005,
+  },
+  {
+    genre: "metalcore",
+    title: "Shadows Are Security",
+    artist: "As I Lay Dying",
+    productImg: [""],
+    price: 12.99,
+    rating: 9,
+    bought: 110,
+    year: 2005,
+  },
+  {
+    genre: "metalcore",
+    title: "The End of Heartache",
+    artist: "Killswitch Engage",
+    productImg: [""],
+    price: 14.99,
+    rating: 10,
+    bought: 150,
+    year: 2004,
+  },
+];
+
+
 // Insert data into MongoDB
 async function seedDatabase() {
   await mongoose.connect(process.env.ATLAS_URI, {
@@ -260,7 +577,7 @@ async function seedDatabase() {
   console.log("Connected to MongoDB Atlas");
 
   await Product.deleteMany({});
-  const result = await Product.insertMany(products);
+  const result = await Product.insertMany(albums);
   console.log("Inserted documents:", result);
 
   console.log("Database seeded with product data");

@@ -11,10 +11,19 @@ E-commerce site for a fictional music store created using REACT, TailwindCSS and
     - Top Albums slider (placeholder images)
     - Footer
 
+* ✅ Created DB 
+    - Made collections for instruments, albums and users
+    - Seeded instruments and album collection
+    - Connected the database to the frontend, making displaying of dynamic data possible
+
+* ✅ Created Albums & Instruments pages
+    - Layout for both pages include: card with title and price for instruments and a card with title, price and also the name of the artist for albums.
+
+
 # 🚧 TODO's 🚧
 *These will change and increase/decrease as i get more ideas*
 
-* ☐ Create Database (Using MongoDB)
+
 * ☐ Layouts for all different sections of the website
 * ☐ Registration and Authentication
 

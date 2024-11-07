@@ -1,33 +1,32 @@
 import React from "react";
-import { getAllInstruments } from "../../../../api/api";
+import { getAllAlbums } from "../../../../api/api";
 import { useEffect, useState } from "react";
 import ProductCard from "../../../elements/ProductCard";
 
-function Instruments() {
-  const [instruments, setInstruments] = useState([]);
+function Albums() {
+  const [albums, setAlbums] = useState([]);
   useEffect(() => {
-    async function loadAllInstruments() {
-      const instrumentsData = await getAllInstruments();
-      setInstruments(instrumentsData);
+    async function loadAllAlbums() {
+      const albumData = await getAllAlbums();
+      setAlbums(albumData);
     }
-    loadAllInstruments();
+    loadAllAlbums();
   }, []);
+
   return (
     <>
       <div className="relative isolate px-15 pt-20 lg:px-15">
         <div className="text-left">
           <h1 className="text-1xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            All instruments
+            All Albums
           </h1>
-
-          
         </div>
       </div>
       <div className="gap-2 grid grid-cols-4 sm:grid-cols-4">
-        {instruments.map((instrument) => {
+        {albums.map((album) => {
           return (
             <>
-              <ProductCard product={instrument} />
+              <ProductCard product={album} />
             </>
           );
         })}
@@ -36,4 +35,4 @@ function Instruments() {
   );
 }
 
-export default Instruments;
+export default Albums;
