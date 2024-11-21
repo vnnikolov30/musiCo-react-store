@@ -19,13 +19,16 @@ E-commerce site for a fictional music store created using REACT, TailwindCSS and
 * ✅ Created Albums & Instruments pages
     - Layout for both pages include: card with title and price for instruments and a card with title, price and also the name of the artist for albums.
 
+* ✅ User Authenthication
+    - Implemented user registration and authentication
+
 
 # 🚧 TODO's 🚧
 *These will change and increase/decrease as i get more ideas*
 
-
 * ☐ Layouts for all different sections of the website
-* ☐ Registration and Authentication
+* ☐ Style the login and registration pages
+* ☐ Make displaying of product images possible
 
 
 

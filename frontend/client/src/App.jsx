@@ -13,6 +13,8 @@ import Studio from "./components/header/categories/Studio";
 import Footer from "./components/home/Footer";
 import Instruments from "./components/header/categories/instruments/Instruments";
 import Albums from "./components/header/categories/albums/Albums";
+import LogIn from "./components/header/LogIn";
+import SignUp from "./components/header/SignUp";
 function App() {
   return (
     <>
@@ -28,6 +30,8 @@ function App() {
           <Route path="/studio" element={<Studio />} />
           <Route path="/instruments" element={<Instruments />} />
           <Route path="/albums" element={<Albums />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<LogIn />} />
         </Routes>
       </Router>
       <Footer />

@@ -27,7 +27,7 @@ function Instruments() {
         {instruments.map((instrument) => {
           return (
             <>
-              <ProductCard product={instrument} />
+              <ProductCard product={instrument}  />
             </>
           );
         })}

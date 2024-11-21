@@ -18,6 +18,7 @@ import {
   Studio,
   Dj,
 } from "../../../public/icons/Icons";
+import { Link as RouterLink}  from "react-router-dom";
 
 export default function Nav() {
   const icons = {
@@ -114,10 +115,12 @@ export default function Nav() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+        <Button as={Link} color="default" href="/login" variant="flat">
+            Log In
+          </Button>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
+          <Button as={Link} color="primary" href="/signup" variant="flat">
             Sign Up
           </Button>
         </NavbarItem>
