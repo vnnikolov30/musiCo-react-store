@@ -18,9 +18,19 @@ import {
   Studio,
   Dj,
 } from "../../../public/icons/Icons";
-import { Link as RouterLink}  from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Nav() {
+
+  const navigate = useNavigate();
+  const { user, logout } = useContext(AuthContext);
+
+  function handleLogout() {
+    logout();
+    navigate("/")
+  }
   const icons = {
     chevron: <ChevronDown fill="currentColor" size={16} />,
     studio: <Studio className="text-success" fill="currentColor" size={30} />,
@@ -35,8 +45,9 @@ export default function Nav() {
     <Navbar shouldHideOnScroll>
       <NavbarBrand>
         {/* <AcmeLogo /> */}
-        <Link href="/" color="foreground"><p className="font-bold text-inherit">MusiCo</p></Link>
-        
+        <Link href="/" color="foreground">
+          <p className="font-bold text-inherit">MusiCo</p>
+        </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-20" justify="center">
         <Dropdown>
@@ -63,42 +74,49 @@ export default function Nav() {
             <DropdownItem
               key="guitars"
               description="Explore a wide range of guitars and basses, from electric to acoustic, perfect for every musician."
-              startContent={icons.guitar} 
+              startContent={icons.guitar}
             >
-              <Link href="/guitars-and-bass" color="foreground">Guitars & Basses</Link>
-              
+              <Link href="/guitars-and-bass" color="foreground">
+                Guitars & Basses
+              </Link>
             </DropdownItem>
 
-            
             <DropdownItem
               key="drums"
               description="Discover top-quality drum kits, cymbals, and percussion instruments for all skill levels."
               startContent={icons.drum}
             >
-              <Link href="/drums" color="foreground">Drums</Link>
+              <Link href="/drums" color="foreground">
+                Drums
+              </Link>
             </DropdownItem>
             <DropdownItem
               key="keys"
               description="Find the perfect piano or keyboard to enhance your sound, from digital to grand pianos."
               startContent={icons.keys}
             >
-              <Link href="/keys" color="foreground">Keys</Link>
+              <Link href="/keys" color="foreground">
+                Keys
+              </Link>
             </DropdownItem>
             <DropdownItem
               key="studio"
               description="Equip your studio with the best recording gear, interfaces, and microphones for professional sound."
               startContent={icons.studio}
             >
-              <Link href="/studio" color="foreground">Studio</Link>
+              <Link href="/studio" color="foreground">
+                Studio
+              </Link>
             </DropdownItem>
-            
+
             <DropdownItem
-              
               key="dj"
               description=" Get the latest DJ equipment, from controllers to turntables, and elevate your next performance."
               startContent={icons.dj}
             >
-              <Link href="/dj" color="foreground">Dj</Link>
+              <Link href="/dj" color="foreground">
+                Dj
+              </Link>
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
@@ -114,16 +132,41 @@ export default function Nav() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-        <Button as={Link} color="default" href="/login" variant="flat">
-            Log In
-          </Button>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="/signup" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
+        {user ? (
+          <>
+            <Button
+              as={Link}
+              color="default"
+              href="/"
+              variant="flat"
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+
+            <Button
+              as={Link}
+              color="warning"
+              href="/profile"
+              variant="flat"
+            >
+              Profile
+            </Button>
+          </>
+        ) : (
+          <>
+            <NavbarItem className="hidden lg:flex">
+              <Button as={Link} color="default" href="/login" variant="flat">
+                Log In
+              </Button>
+            </NavbarItem>
+            <NavbarItem>
+              <Button as={Link} color="primary" href="/signup" variant="flat">
+                Sign Up
+              </Button>
+            </NavbarItem>
+          </>
+        )}
       </NavbarContent>
     </Navbar>
   );
