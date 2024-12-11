@@ -17,6 +17,7 @@ import LogIn from "./components/header/LogIn";
 import SignUp from "./components/header/SignUp";
 import { AuthProvider } from "./context/authContext";
 import UserProfile from "./components/UserProfile";
+import ShopingCart from "./components/home/ShoppingCart";
 
 function App() {
   return (
