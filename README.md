@@ -36,7 +36,7 @@ E-commerce site for a fictional music store created using REACT, TailwindCSS and
 
 # 🎨 Demo 🎨
 
-<video src="https://github.com/user-attachments/assets/6d34f849-a573-40b1-8ba7-282b81f2973a" 
+<video src="https://github.com/user-attachments/assets/6d34f849-a573-40b1-8ba7-282b81f2973a](https://github.com/user-attachments/assets/cb3d1000-a530-48de-ac4f-81b2d2109210" 
     autoplay 
     loop 
     muted 
