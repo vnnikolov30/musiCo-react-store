@@ -22,12 +22,14 @@ E-commerce site for a fictional music store created using REACT, TailwindCSS and
 * ✅ User Authenthication
     - Implemented user registration and authentication
 
+* ✅ User Profiles
+    - Fully functional user profiles containing: Profile Picture, Name, Email, Past and Active purchases.
+
 
 # 🚧 TODO's 🚧
 *These will change and increase/decrease as i get more ideas*
 
 * ☐ Layouts for all different sections of the website
-* ☐ Style the login and registration pages
 * ☐ Make displaying of product images possible
 
 

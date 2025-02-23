@@ -24,6 +24,9 @@ userRoutes.route("/users").post(async (request, response) => {
       email: request.body.email,
       password: pwHash,
       joinDate: new Date(),
+      profilePic:  "",
+      activePurchases: [],
+      pastPurchases:  [],
     };
 
     let data = await db.collection("users").insertOne(MongoObject);
@@ -59,21 +62,31 @@ userRoutes.route("/users/:id").get(async (request, response) => {
 
 userRoutes.route("/users/login").post(async (request, response) => {
   let db = database.getDb();
-  const user = await db
-    .collection("users")
-    .findOne({ email: request.body.email });
+  const user = await db.collection("users").findOne({ email: request.body.email });
 
   if (user) {
-    let confirmation = await bcrypt.compare(
-      request.body.password,
-      user.password
-    );
+    let confirmation = await bcrypt.compare(request.body.password, user.password);
 
     if (confirmation) {
-        const token = jwt.sign(user, process.env.SECRETKEY, {expiresIn: "1h"})
+      const payload = {
+        id: user._id,
+        email: user.email,
+        name: user.name,
+        profilePic: user.profilePic,
+        activePurchases: user.activePurchases,
+        pastPurchases: user.pastPurchases,
+      };
+
+      const secretKey = process.env.SECRETKEY;
+      if (!secretKey) {
+        return response.status(500).json({ success: false, message: "Server error: Missing secret key" });
+      }
+
+      const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
+
       response.json({ success: true, token });
     } else {
-      response.json({ success: false, message: "Incorrect Pasword!" });
+      response.json({ success: false, message: "Incorrect Password!" });
     }
   } else {
     response.json({ success: false, message: "User not found" });

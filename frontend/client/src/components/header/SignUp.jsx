@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createUser } from "../../api/api";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/authContext";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ function SignUp() {
     password: "",
   });
 
+  const { setUser: setAuthUser } = useContext(AuthContext);
   function handleChange(e) {
     setUser({ ...user, [e.target.name]: e.target.value });
   }
@@ -21,6 +23,9 @@ function SignUp() {
     if (response.status !== 200) {
       alert("User could not be created :((");
     } else {
+      const userData = { email: user.email, token: response }; 
+      sessionStorage.setItem("User", JSON.stringify(userData));
+      setAuthUser(userData);
       navigate("/");
       sessionStorage.setItem("User", response);
     }

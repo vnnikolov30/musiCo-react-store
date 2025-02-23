@@ -7,12 +7,25 @@ function UserProfile() {
 
   useEffect(() => {
     async function loadUserData() {
-      const token = sessionStorage.getItem("User");
-      const decodedUser = jwt_decode.jwtDecode(token);
+      const userData = sessionStorage.getItem("User");
 
+      if (!userData) {
+        console.error("No user data found in sessionStorage");
+        return;
+      }
+
+      const parsedData = JSON.parse(userData);
+
+      if (!parsedData.token) {
+        console.error("No token found in stored user data");
+        return;
+      }
+      const decodedUser = jwt_decode.jwtDecode(parsedData.token);
       setUser({
         decodedUser,
-        profilePic: decodedUser.profilePic,
+        profilePic:
+          decodedUser.profilePic ||
+          "https://static-00.iconduck.com/assets.00/profile-default-icon-2048x2045-u3j7s5nj.png",
         name: decodedUser.name,
         email: decodedUser.email,
         activePurchases: decodedUser.activePurchases || [],
@@ -47,7 +60,7 @@ function UserProfile() {
             <h3 className="text-xl font-semibold text-gray-800 border-b pb-2">
               Active Purchases
             </h3>
-            {user.activePurchases ? (
+            {user.activePurchases?.length > 0 ? (
               <ul className="mt-4 space-y-4">
                 {user.activePurchases.map((purchase) => (
                   <li
@@ -79,7 +92,7 @@ function UserProfile() {
             <h3 className="text-xl font-semibold text-gray-800 border-b pb-2">
               Past Purchases
             </h3>
-            {user.pastPurchases ? (
+            {user.pastPurchases?.length > 0 ? (
               <ul className="mt-4 space-y-4">
                 {user.pastPurchases.map((purchase) => (
                   <li
